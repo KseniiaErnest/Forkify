@@ -24,6 +24,7 @@ const data = await getJSON( `${API_URL}/${id}`);
       console.log(recipe);
     } catch (err) {
       console.error(`${err}`);
+      throw err;
     }
     
   }
