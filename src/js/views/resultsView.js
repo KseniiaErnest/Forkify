@@ -32,5 +32,3 @@ _generateMarkupPreview(result) {
 }
 
 export default new resultsView();
-
-return this._data.map(oneRecipe => this._generateMarkupPreview(oneRecipe)).join('');
