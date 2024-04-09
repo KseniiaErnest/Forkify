@@ -44,7 +44,7 @@ await model.loadSearchResult(query);
 
 // Render results
 // resultsView.render(model.state.search.results);
-resultsView.render(model.getSearchResultsPage(3));
+resultsView.render(model.getSearchResultsPage());
 
 // Render the initial pagination buttons
 paginationView.render(model.state.search);
@@ -63,11 +63,23 @@ resultsView.render(model.getSearchResultsPage(goToPage));
 // 2) Render NEW pagination buttons
 paginationView.render(model.state.search);
 };
+
+const controlServings = function(newServings) {
+// Update the recipe's servingd (in state)
+model.updateServings(newServings);
+
+// Update the recipe view
+recipeView.render(model.state.recipe);
+};
+
+
 ////////////////////////////////////////////////
 const init = function () {
   recipeView.addHandlerRender(controlRecipe);
+  recipeView.addHandlerUpdateServings(controlServings);
   searchView.addHandlerSearch(controlSearchResults);
   paginationView.addHandlerClick(controlPagination);
+  
 };
 
 init();
