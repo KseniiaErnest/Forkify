@@ -106,13 +106,21 @@ await model.uploadRecipe(newRecipe);
 // Render recipe
 recipeView.render(model.state.recipe);
 
+
+// Success message
+addRecipeView.renderMessage();
+
+// Render bookmark view
+bookmarksView.render(model.state.bookmarks);
+
+// Change ID in URL
+window.history.pushState(null, '', `#${model.state.recipe.id}`);
+
 // Close form window
 setTimeout(function() {
   addRecipeView.toggleWindow();
 }, MODAL_CLOSE_SEC * 1000);
 
-// Success message
-addRecipeView.renderMessage();
   } catch(err) {
 console.error(err);
 addRecipeView.renderError(err.message);
